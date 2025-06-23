@@ -8,6 +8,9 @@
     "type": "git",
     "url": "git://github.com/mapbox/polyline.git"
   },
+  "engines": {
+    "node": ">= 18.3.0"
+  },
   "devDependencies": {
     "codecov": "^3.8.3",
     "eslint": "^8.49.0",
