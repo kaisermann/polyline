@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const { parseArgs } = require("node:util");
-const polyline = require("../");
+const { parseArgs } = require('node:util');
+const polyline = require('../');
 
 let {
   values: {
@@ -14,11 +14,11 @@ let {
   },
 } = parseArgs({
   options: {
-    decode: { type: "boolean", short: "d", default: true },
-    encode: { type: "boolean", short: "e" },
-    toGeoJSON: { type: "boolean" },
-    fromGeoJSON: { type: "boolean" },
-    precision: { type: "string", short: "p" },
+    decode: { type: 'boolean', short: 'd', default: true },
+    encode: { type: 'boolean', short: 'e' },
+    toGeoJSON: { type: 'boolean' },
+    fromGeoJSON: { type: 'boolean' },
+    precision: { type: 'string', short: 'p' },
   },
   strict: false,
 });
@@ -29,15 +29,15 @@ decode = encode ? false : decode;
 
 const p = precision ? parseInt(precision, 10) : undefined;
 
-let rawInput = "";
-process.stdin.on("readable", function () {
+let rawInput = '';
+process.stdin.on('readable', function () {
   const chunk = process.stdin.read();
   if (chunk !== null) {
     rawInput += chunk;
   }
 });
 
-process.stdin.on("end", function () {
+process.stdin.on('end', function () {
   const converted = convert(rawInput);
   if (!converted) {
     exit();
@@ -62,7 +62,7 @@ function convert(rawString) {
     return polyline.decode(rawString, p);
   }
 
-  process.stderr.write("No valid option provided.\n");
+  process.stderr.write('No valid option provided.\n');
   showHelp();
 }
 
